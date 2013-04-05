@@ -20,9 +20,6 @@ import vik.example.springrest.bean.Saying;
 @RequestMapping("/")
 public class SpringRestController{
 	
-	@Autowired
-	private Jaxb2Marshaller jaxb2Mashaller;
-	
 	@RequestMapping(method=RequestMethod.PUT)
 	public ModelAndView put(@RequestBody String body) {
 		ObjectMapper mapper = new ObjectMapper();
@@ -33,8 +30,7 @@ public class SpringRestController{
 			e.printStackTrace();
 		}catch(JsonMappingException me){
 			me.printStackTrace();
-		}
-		catch(IOException ie){
+		}catch(IOException ie){
 			ie.printStackTrace();
 		}
 		return new ModelAndView("xmlView", "saying", saying);
